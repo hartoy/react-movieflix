@@ -1,0 +1,23 @@
+.movieDetails{
+    padding:10px;
+    background-color: #212529;
+    text-align: center;
+    color:#0DCAF0;
+}
+.imgMovie{
+    width:100%;
+}
+
+.overview{
+    font-size:20px;
+    text-align: left;
+    padding:2px;
+}
+h3{
+    text-align: left;
+}
+
+.rating{
+    text-align: left;
+    font-size:20px;
+}

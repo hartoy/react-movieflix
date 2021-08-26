@@ -1,0 +1,13 @@
+.notFound {
+    background-color: #080F28;
+    text-align: center;
+}
+h1{
+    color:#0DCAF0;
+    margin-top: 20px;
+}
+
+.imgResponsive {
+    width: 80%;
+    height: auto;
+  }
