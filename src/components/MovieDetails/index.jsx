@@ -25,15 +25,13 @@ function MovieDetails (props) {
        } 
         getData().then(data =>{
            setMovies(data);
-           console.log(data.genres.length);
-           
            setIsLoading(false);
        });
        
 },[])
 let imagenMovie = `https://image.tmdb.org/t/p/w500${movies.poster_path}`;
     
-
+let genres= movies.genres ? movies.genres : [];
 
 return(
     <Row className="movieDetails">
@@ -43,11 +41,16 @@ return(
           <img className="imgMovie"  src = {imagenMovie}  />
           </Col>
           <Col md={8} >
-          <h1>{movies.original_title}</h1>
+          <h1 className="title">{movies.original_title}</h1>
+          <h3>Genres:</h3>
+            <ul className = "genres">
+              {genres.map((genre,i)=><li key = {i}>{genre.name}</li>) } 
+           </ul>
           <h3>Review:</h3>
           <p className="overview">{movies.overview}</p>
-          <p className="rating">Rating: {movies.vote_average}⭐</p>
           
+           <h3>Rating: {movies.vote_average} ⭐</h3>
+           
           <Button className="goBack" as={Link} to="/">Go Back</Button>
           </Col>
       

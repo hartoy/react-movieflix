@@ -1,6 +1,7 @@
 
 import { Navbar , Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import './navbar.css'
 
 function NavbarComp (){
@@ -20,9 +21,10 @@ function NavbarComp (){
   
   
   return(
-        
+      
       <Navbar bg="dark" variant="dark"  expand="lg">
-      <Navbar.Brand >MovieFlix</Navbar.Brand>
+        <Container>
+      <Navbar.Brand className="movieflix" >MovFlix</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
@@ -31,11 +33,11 @@ function NavbarComp (){
           navbarScroll
         >
           <Nav.Link className="buttonLink" as={Link} to="/">Home</Nav.Link>
-          <Nav.Link className="buttonLink" as={Link} to="/favoritos">Favoritos ❤</Nav.Link>
+          <Nav.Link className="buttonLink" as={Link} to="/favoritos">Favorites ❤</Nav.Link>
           
          
         </Nav>
-        <Form className="d-flex" onSubmit={submitHandler}>
+        <Form className="d-flex ms-auto" onSubmit={submitHandler}>
           <FormControl
              type="text"
              placeholder="Search"
@@ -47,9 +49,10 @@ function NavbarComp (){
 
         </Form>
       </Navbar.Collapse>
+      </Container> 
     </Navbar>
-            
-       
+             
+      
         
     );
 }

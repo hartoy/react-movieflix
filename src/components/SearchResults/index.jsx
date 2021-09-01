@@ -2,7 +2,8 @@ import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Row,  Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import imgLoading from "../../img/imgLoading.png";
+import noMovieImg from "../../img/noMovie.png";
 
 import './searchResults.css'
 
@@ -11,18 +12,21 @@ function SearchResults (){
     const [ validator, setValidator ] = useState(true);
     const [ movies, setMovies ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
+    const [ results, setResults ] = useState(true);
+   
 
     const location = useLocation();
     const query = location.search;
     
     let word= query.substring(8);
-    console.log(word);
+   
     
-    //component did mount
+    
 
     useEffect(() => {
-        if (word.length<=3) {
+        if (word.length<=2) {
             setValidator(false)
+            setIsLoading(false);
         }else{
             const getData = async () =>{
                 let endPoint =  `
@@ -32,26 +36,38 @@ function SearchResults (){
                 return data;  
                } 
                 getData().then(data =>{
-                   setMovies(data.results);
-                   console.log(data.results);
-                   setIsLoading(false);
-    
+                    if (data.results.length === 0){
+                        setResults(false);
+                        setIsLoading(false)
+                    }else{
+                        setMovies(data.results);
+                        setIsLoading(false);
+                        setValidator(true);
+                        setResults(true);
+                    } 
                });
         }
            
-    },[])
+    },[word])
 
 
-
+  
    
     
     return(
         
             
         <Row>
-          {isLoading && <h3> Loading...</h3> }
-          {!validator && <h3> Tu busqueda debe tener mas de 3 caracteres</h3>} 
-          {movies.map(oneMovie =>{
+          { isLoading && 
+            <div className= "cargando">
+              <h3 className="loading"> Loading...</h3>  
+              <img className="imgLoading" src={imgLoading} alt="" />
+              
+           </div>
+          }
+
+          {!validator && <h3 className="validator"> ❌ At least 3 characters are required for your search ❌</h3>} 
+          { results? movies.map(oneMovie =>{
            let imagenMovie = `https://image.tmdb.org/t/p/w500${oneMovie.poster_path}`;
            return(
                <Col lg={3} sm={6} xs ={12} >
@@ -62,12 +78,13 @@ function SearchResults (){
                  <Card className="my-2 h-100">
                   <Card.Img variant="top" src = {imagenMovie} />
                   <Card.Body>
-                   <Card.Title className="titulo d-inline-block">{oneMovie.title}</Card.Title>
-                     <p className=" heart d-inline-block">❤</p>
-                     <p className="star d-inline-block">⭐{oneMovie.vote_average}</p>
-                   <Card.Text className="resumen" >{oneMovie.overview.substr(0, 80).trim()}...</Card.Text>
+                   <Card.Title className="titulo d-inline-block">{oneMovie.title.substr(0, 25).trim()}</Card.Title>
+                     
+                   <Card.Text className="resumen" >{oneMovie.overview.substr(0, 90).trim()}...</Card.Text>
+                   <Button className="detalles" as={Link} to={`/movie-details/${oneMovie.id}`}>Details</Button>
+                   <p className=" heart d-inline-block">🖤</p>
                   </Card.Body>
-                  <Button className="detalles" as={Link} to={`/movie-details/${oneMovie.id}`}>Ver detalle</Button>
+                  
                  </Card>
                  
                  
@@ -75,8 +92,13 @@ function SearchResults (){
                </div>
                </Col>
            )
-       } )}
-       
+       } ):
+       <div className="noResults">
+       <h1 className="validator">It looks like there aren't any  matches for your search</h1>
+       <img className="noMovieImg" src={noMovieImg} alt="" />
+       </div>
+       }
+        
        </Row>
        
   

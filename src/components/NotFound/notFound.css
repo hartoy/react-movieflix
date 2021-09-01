@@ -5,9 +5,20 @@
 h1{
     color:#0DCAF0;
     margin-top: 20px;
+    font-family: 'Raleway', sans-serif; 
 }
 
 .imgResponsive {
     width: 80%;
     height: auto;
   }
+
+
+
+  @media (max-width: 992px) {
+    
+    .noMovieImg {
+        width: 100%;
+      }
+  }
+  

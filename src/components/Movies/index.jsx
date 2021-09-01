@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Row,  Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import imgLoading from "../../img/imgLoading.png";
 import './movies.css'
 
 
@@ -37,7 +38,13 @@ function Movies (){
             
              <Row>
               
-                  {isLoading && <h3> Loading...</h3> }
+              { isLoading && 
+            <div className= "cargando">
+              <h3 className="loading"> Loading...</h3>  
+              <img className="imgLoading" src={imgLoading} alt="" />
+              
+           </div>
+          }
                {movies.map(oneMovie =>{
                 let imagenMovie = `https://image.tmdb.org/t/p/w500${oneMovie.poster_path}`;
                 return(
@@ -46,24 +53,26 @@ function Movies (){
                         
                         
                         
-                      <Card className="my-2 h-100">
-                       <Card.Img variant="top" src = {imagenMovie} />
-                       <Card.Body>
-                        <Card.Title className="titulo d-inline-block">{oneMovie.title}</Card.Title>
-                          <p className=" heart d-inline-block">❤</p>
-                        <Card.Text className="resumen" >{oneMovie.overview.substr(0, 80).trim()}...</Card.Text>
-                       </Card.Body>
-                       <Button className="detalles" as={Link} to={`/movie-details/${oneMovie.id}`}>Ver detalle</Button>
-                      </Card>
-                      
-                      
-                      
-                    </div>
-                    </Col>
-                )
-            } )}
-            
-            </Row>
+                    <Card className="my-2 h-100">
+                  <Card.Img className="hovereffect" variant="top" src = {imagenMovie} />
+                  <Card.Body>
+                   <Card.Title className="titulo d-inline-block">{oneMovie.title.substr(0, 25).trim()}</Card.Title>
+                     
+                   <Card.Text className="resumen" >{oneMovie.overview.substr(0, 90).trim()}...</Card.Text>
+                   <Button className="detalles" as={Link} to={`/movie-details/${oneMovie.id}`}>Details</Button>
+                   <p className=" heart d-inline-block">🖤</p>
+                  </Card.Body>
+                  
+                 </Card>
+                 
+                 
+                 
+               </div>
+               </Col>
+           )
+       } )}
+       
+       </Row>
             
        
          

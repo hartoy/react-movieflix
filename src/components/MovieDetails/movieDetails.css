@@ -1,5 +1,5 @@
 .movieDetails{
-    padding:10px;
+    padding:30px;
     background-color: #212529;
     text-align: center;
     color:#0DCAF0;
@@ -13,11 +13,30 @@
     text-align: left;
     padding:2px;
 }
+.title{
+    font-family: 'Kanit', sans-serif !important;
+}
 h3{
     text-align: left;
+    font-family: 'Kanit', sans-serif !important;
 }
 
 .rating{
     text-align: left;
     font-size:20px;
+}
+
+.genres{
+    text-align: left;
+}
+
+.genreting{
+    display:block;
+}
+
+.goBack{
+    font-family: 'Kanit', sans-serif;
+    background-color:#0DCAF0;
+    color: black;
+    border-color: #0DCAF0;
 }

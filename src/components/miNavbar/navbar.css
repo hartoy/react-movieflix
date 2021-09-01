@@ -12,6 +12,21 @@
 .buttonLink{
     color: #0DCAF0 !important;
 }
+.buttonLink:hover{
+    color: white !important;
+    font-family: 'Raleway', sans-serif; 
+}
+
 .navbar{
     margin-bottom: 15px;
 }
+
+.movieflix{
+    font-family: 'Faster One', cursive;
+    font-size: 25px;
+}
+
+.movieflix:hover{
+    color: #0DCAF0 !important;
+}
+
