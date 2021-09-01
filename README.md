@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was enterily built with React. Consumes data from themoviedb´s API and allows you to search for movies, view its details and save them in your favourite list.
 
 ## Available Scripts
 
