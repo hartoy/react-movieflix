@@ -38,7 +38,7 @@ return(
       
           {isLoading && <h3> Loading...</h3> }
           <Col md={4} >
-          <img className="imgMovie"  src = {imagenMovie}  />
+          <img className="imgMovie"  alt="" src = {imagenMovie}  />
           </Col>
           <Col md={8} >
           <h1 className="title">{movies.original_title}</h1>
