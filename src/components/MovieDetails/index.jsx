@@ -28,7 +28,7 @@ function MovieDetails (props) {
            setIsLoading(false);
        });
        
-},[])
+},[id])
 let imagenMovie = `https://image.tmdb.org/t/p/w500${movies.poster_path}`;
     
 let genres= movies.genres ? movies.genres : [];
