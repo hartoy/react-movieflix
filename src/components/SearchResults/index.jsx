@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button, Row,  Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import imgLoading from "../../img/imgLoading.png";
-import noMovieImg from "../../img/noMovie.png";
-
+import noResult from "../../img/noMovie.png";
+import noMovieImg from "../../img/noimg.png";
 import './searchResults.css'
 
 function SearchResults (){
@@ -68,7 +68,7 @@ function SearchResults (){
 
           {!validator && <h3 className="validator"> ❌ At least 3 characters are required for your search ❌</h3>} 
           { results? movies.map(oneMovie =>{
-           let imagenMovie = `https://image.tmdb.org/t/p/w500${oneMovie.poster_path}`;
+           let imagenMovie = oneMovie.poster_path ? `https://image.tmdb.org/t/p/w500${oneMovie.poster_path}` : `${noMovieImg}`;
            return(
                <Col lg={3} sm={6} xs ={12} >
                <div key={oneMovie.id}>
@@ -82,7 +82,7 @@ function SearchResults (){
                      
                    <Card.Text className="resumen" >{oneMovie.overview.substr(0, 90).trim()}...</Card.Text>
                    <Button className="detalles" as={Link} to={`/movie-details/${oneMovie.id}`}>Details</Button>
-                   <p className=" heart d-inline-block">🖤</p>
+                   <p className=" heart d-inline-block">🤍</p>
                   </Card.Body>
                   
                  </Card>
@@ -95,7 +95,7 @@ function SearchResults (){
        } ):
        <div className="noResults">
        <h1 className="validator">It looks like there aren't any  matches for your search</h1>
-       <img className="noMovieImg" src={noMovieImg} alt="" />
+       <img className="noMovieImg" src={noResult} alt="" />
        </div>
        }
         

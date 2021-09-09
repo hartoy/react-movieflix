@@ -1,14 +1,24 @@
 .detalles {
     width: 30%;
-    margin-right: 50px;
+    margin-right: 100px;
     background-color: #0DCAF0;
     color:#212529;
     font-family: 'Kanit', sans-serif;
     border-color: #0DCAF0;
 }
 
+@media (min-width: 993px) {
+    
+  .detalles {
+      width: 50%;
+    }
+    .heart{
+      margin-left: -10px !important;   
+  }
+  }    
+
 .heart{
-    margin-left: 50px;
+    margin-left: 45px;
     font-size:25px;
 }
 
@@ -45,5 +55,7 @@
 }
 
 
-
+.lopo{
+  display:none;
+}
 

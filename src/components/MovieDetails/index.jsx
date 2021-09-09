@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {  Button, Row,  Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import noMovieImg from "../../img/noimg.png";
 
 import './movieDetails.css'
 
@@ -31,7 +32,7 @@ function MovieDetails (props) {
 },[id])
 
 
-let imagenMovie = `https://image.tmdb.org/t/p/w500${movies.poster_path}`;
+let imagenMovie = movies.poster_path ? `https://image.tmdb.org/t/p/w500${movies.poster_path}` : `${noMovieImg}`;
     
 let genres= movies.genres ? movies.genres : [];
 
