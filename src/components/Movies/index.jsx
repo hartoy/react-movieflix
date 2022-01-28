@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 import imgLoading from "../../img/imgLoading.png";
 import "./movies.css";
 
@@ -17,21 +18,16 @@ function Movies() {
   //component did mount
 
   useEffect(() => {
-    if (localStorage.length === 0) {
-      localStorage.setItem("favoritos", JSON.stringify(ArrayIds));
-    }
-    const getData = async () => {
-      let endPoint = `${baseURL}popular?api_key=${apiKey}&language=en-US&page=1`;
-      let response = await fetch(endPoint);
-      let data = await response.json();
-      return data;
-    };
-    getData().then((data) => {
-      setMovies(data.results);
+    const apiCall = async () => {
+      let response = await Axios(
+        `${baseURL}popular?api_key=${apiKey}&language=en-US&page=1`
+      );
+      setMovies(response.data.results);
       setFavoritos(localStorage.favoritos);
       console.log(favoritos);
       setIsLoading(false);
-    });
+    };
+    apiCall();
   }, []);
 
   const addFavHandler = (e) => {
