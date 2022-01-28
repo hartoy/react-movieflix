@@ -33,7 +33,7 @@ function NavbarComp (){
           navbarScroll
         >
           <Nav.Link className="buttonLink" as={Link} to="/">Home</Nav.Link>
-          <Nav.Link className="buttonLink" as={Link} to="/favoritos">Favorites ❤</Nav.Link>
+          <Nav.Link className="buttonLink" as={Link} to="/favoritos" >Favorites ❤</Nav.Link>
           
          
         </Nav>

@@ -1,42 +1,42 @@
-.movieDetails{
-    padding:30px;
-    background-color: #212529;
-    text-align: center;
-    color:#0DCAF0;
+.movieDetails {
+  padding: 30px;
+  background-color: #212529;
+  text-align: center;
+  color: #0dcaf0;
 }
-.imgMovie{
-    width:100%;
-}
-
-.overview{
-    font-size:20px;
-    text-align: left;
-    padding:2px;
-}
-.title{
-    font-family: 'Kanit', sans-serif !important;
-}
-h3{
-    text-align: left;
-    font-family: 'Kanit', sans-serif !important;
+.imgMovie {
+  width: 100%;
 }
 
-.rating{
-    text-align: left;
-    font-size:20px;
+.overview {
+  font-size: 20px;
+  text-align: left;
+  padding: 2px;
+}
+.title {
+  font-family: "Kanit", sans-serif !important;
+}
+h3 {
+  text-align: left;
+  font-family: "Kanit", sans-serif !important;
 }
 
-.genres{
-    text-align: left;
+.rating {
+  text-align: left;
+  font-size: 20px;
 }
 
-.genreting{
-    display:block;
+.genres {
+  text-align: left;
 }
 
-.goBack{
-    font-family: 'Kanit', sans-serif;
-    background-color:#0DCAF0;
-    color: black;
-    border-color: #0DCAF0;
+.genreting {
+  display: block;
+}
+
+.goBack {
+  font-family: "Kanit", sans-serif;
+  background-color: #0dcaf0;
+  color: black;
+  border-color: #0dcaf0;
 }

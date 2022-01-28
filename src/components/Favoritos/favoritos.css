@@ -1,3 +1,56 @@
 .favPage{
     background-color: #080F28;
 }
+
+.detallesFav {
+    width: 30%;
+    margin-right: 25px;
+    background-color: #0DCAF0;
+    color:#212529;
+    font-family: 'Kanit', sans-serif;
+    border-color: #0DCAF0;
+}
+@media (min-width: 993px) {
+    
+    .detallesFav {
+        width: 50%;
+      }
+    .delFav2{
+        margin-left: 2px;
+    }  
+    } 
+
+.delFav{
+    color:white;
+    background-color:#FF0000;
+    font-family: 'Kanit', sans-serif;
+    border-color: #FF0000;
+    text-align: right;
+    margin-left: auto;
+    display: block;
+}
+.delFav:hover{
+    background-color:#C8102E; 
+    border-color: #C8102E;
+}
+
+
+.delFav2{
+    color:white;
+    background-color:#FF0000;
+    font-family: 'Kanit', sans-serif;
+    border-color: #FF0000;
+    text-align: right;
+    margin-left: 20px;
+}
+.delFav2:hover{
+    background-color:#C8102E; 
+    border-color: #C8102E;
+}
+
+.clearFav h3{
+    color:#0DCAF0;
+    margin-top:150px;
+    text-align:center;
+    margin-bottom:20px;
+}

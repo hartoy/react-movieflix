@@ -1,32 +1,31 @@
-.searchButton{
-    margin-left: 10px;
-    color: #0DCAF0;
-    border-color: #0DCAF0;
-    background-color: #212529;
+.searchButton {
+  margin-left: 10px;
+  color: #0dcaf0;
+  border-color: #0dcaf0;
+  background-color: #212529;
 }
 
-.searchButton :hover{
-    background-color:#0DCAF0; 
+.searchButton :hover {
+  background-color: #0dcaf0;
 }
 
-.buttonLink{
-    color: #0DCAF0 !important;
+.buttonLink {
+  color: #0dcaf0 !important;
 }
-.buttonLink:hover{
-    color: white !important;
-    font-family: 'Raleway', sans-serif; 
-}
-
-.navbar{
-    margin-bottom: 15px;
+.buttonLink:hover {
+  color: white !important;
+  font-family: "Raleway", sans-serif;
 }
 
-.movieflix{
-    font-family: 'Faster One', cursive;
-    font-size: 25px;
+.navbar {
+  margin-bottom: 15px;
 }
 
-.movieflix:hover{
-    color: #0DCAF0 !important;
+.movieflix {
+  font-family: "Faster One", cursive;
+  font-size: 25px;
 }
 
+.movieflix:hover {
+  color: #0dcaf0 !important;
+}

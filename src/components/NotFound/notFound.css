@@ -1,24 +1,20 @@
 .notFound {
-    background-color: #080F28;
-    text-align: center;
+  background-color: #080f28;
+  text-align: center;
 }
-h1{
-    color:#0DCAF0;
-    margin-top: 20px;
-    font-family: 'Raleway', sans-serif; 
+h1 {
+  color: #0dcaf0;
+  margin-top: 20px;
+  font-family: "Raleway", sans-serif;
 }
 
 .imgResponsive {
-    width: 80%;
-    height: auto;
+  width: 80%;
+  height: auto;
+}
+
+@media (max-width: 992px) {
+  .noMovieImg {
+    width: 100%;
   }
-
-
-
-  @media (max-width: 992px) {
-    
-    .noMovieImg {
-        width: 100%;
-      }
-  }
-  
+}
