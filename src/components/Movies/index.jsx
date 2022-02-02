@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -15,42 +16,40 @@ function Movies() {
   const baseURL = "https://api.themoviedb.org/3/movie/";
   const apiKey = "fb6347fd6c56bdb6a17dca07b0c83079";
 
-  //component did mount
+  const getData = async () => {
+    let response = await Axios(
+      `${baseURL}popular?api_key=${apiKey}&language=en-US&page=1`
+    );
+    setMovies(response.data.results);
+    setFavoritos(localStorage.favoritos);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const apiCall = async () => {
-      let response = await Axios(
-        `${baseURL}popular?api_key=${apiKey}&language=en-US&page=1`
-      );
-      setMovies(response.data.results);
-      setFavoritos(localStorage.favoritos);
-      console.log(favoritos);
-      setIsLoading(false);
-    };
-    apiCall();
-  }, []);
+    getData();
+  }, [ArrayIds]);
 
   const addFavHandler = (e) => {
     const elementoPadre = e.currentTarget.parentElement;
     const myFav = elementoPadre.querySelector(".lopo").innerText;
-    console.log("id de peli que se agrega:", myFav);
     if (localStorage.length === 0) {
       ArrayIds.push(myFav);
       localStorage.setItem("favoritos", JSON.stringify(ArrayIds));
     } else {
       let localList = localStorage.getItem("favoritos");
-      console.log("listado de ids en fav:", localList);
       let list = JSON.parse(localList);
       list.push(myFav);
       localStorage.setItem("favoritos", JSON.stringify(list));
     }
+  };
 
+  const RemoveFavHandler = (e) => {
+    const elementoPadre = e.currentTarget.parentElement;
+    const myFav = elementoPadre.querySelector(".lopo").innerText;
     let localList = localStorage.getItem("favoritos");
     let list = JSON.parse(localList);
-    const buscar = list.find((element) => myFav);
-    if (buscar !== undefined) {
-      elementoPadre.querySelector(".heart").innerText = "❤";
-    }
+    list.splice(list.indexOf(myFav), 1); // Elimina el elemento myFav del array ​list
+    localStorage.setItem("favoritos", JSON.stringify(list)); // Sobrescribe el array de favoritos en el localStorage
   };
 
   return (
@@ -64,8 +63,8 @@ function Movies() {
       {movies.map((oneMovie) => {
         let imagenMovie = `https://image.tmdb.org/t/p/w500${oneMovie.poster_path}`;
         return (
-          <Col lg={3} sm={6} xs={12}>
-            <div key={oneMovie.id}>
+          <Col key={oneMovie.id} lg={3} sm={6} xs={12}>
+            <div>
               <Card className="my-2 h-100">
                 <Card.Img
                   className="hovereffect"
@@ -88,9 +87,21 @@ function Movies() {
                     Details
                   </Button>
 
-                  <p className=" heart d-inline-block" onClick={addFavHandler}>
-                    🤍
-                  </p>
+                  {favoritos.includes(oneMovie.id) ? (
+                    <p
+                      className=" heart d-inline-block"
+                      onClick={RemoveFavHandler}
+                    >
+                      ❤️
+                    </p>
+                  ) : (
+                    <p
+                      className=" heart d-inline-block"
+                      onClick={addFavHandler}
+                    >
+                      🤍
+                    </p>
+                  )}
                 </Card.Body>
               </Card>
             </div>

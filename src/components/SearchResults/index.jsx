@@ -14,6 +14,7 @@ function SearchResults() {
   const [results, setResults] = useState(true);
 
   const location = useLocation();
+
   const query = location.search;
 
   let word = query.substring(8);

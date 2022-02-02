@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
-import imgLoading from "../../img/imgLoading.png";
+import { Link } from "react-router-dom";
+import Axios from "axios";
 import noMovieImg from "../../img/noimg.png";
 import "./favoritos.css";
 
 function Favoritos() {
-  const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [lopo, setLopo] = useState(false);
 
   let localData = JSON.parse(localStorage.getItem("favoritos"));
+  console.log("estas pelis estan en favoritos", localData);
 
   const id = localData;
 
-  console.log(localStorage.favoritos);
+  const getData = async () => {
+    id.forEach(async (unId) => {
+      let response = await Axios(
+        `https://api.themoviedb.org/3/movie/${unId}?api_key=fb6347fd6c56bdb6a17dca07b0c83079&language=en-US`
+      );
+      console.log("valor response.data.title en getData", response.data.title);
+      console.log(movies);
+      setMovies((movies) => [...movies, response.data]);
+    });
+  };
 
   useEffect(() => {
     if (localData.length === 0) {
       setLopo(true);
     } else {
-      id.forEach(async (unId) => {
-        let endPoint = `https://api.themoviedb.org/3/movie/${unId}?api_key=fb6347fd6c56bdb6a17dca07b0c83079&language=en-US`;
-        await fetch(endPoint)
-          .then((response) => response.json())
-          .then((data) => {
-            setMovies((movies) => [...movies, data]);
-          });
-      });
+      getData();
     }
+    console.log("useEffect");
   }, []);
 
   const removeAllFav = (e) => {
@@ -64,20 +68,15 @@ function Favoritos() {
           <h3>You don't have favorite movies</h3>
         </div>
       )}
-      {isLoading && (
-        <div className="cargando">
-          <h3 className="loading"> Loading...</h3>
-          <img className="imgLoading" src={imgLoading} alt="" />
-        </div>
-      )}
 
       {movies.map((oneMovie) => {
+        console.log("valor movies dentro del map", movies);
         let imagenMovie = oneMovie.poster_path
           ? `https://image.tmdb.org/t/p/w500${oneMovie.poster_path}`
           : `${noMovieImg}`;
         return (
-          <Col lg={3} sm={6} xs={12}>
-            <div key={oneMovie.id}>
+          <Col key={oneMovie.id} lg={3} sm={6} xs={12}>
+            <div>
               <Card className="my-2 h-100">
                 <Card.Img
                   className="hovereffect"
