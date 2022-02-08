@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -32,7 +31,7 @@ function Favoritos() {
     } else {
       getData();
     }
-    console.log("useEffect");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeAllFav = (e) => {

@@ -11,6 +11,7 @@ function Movies() {
   const [movies, setMovies] = useState([]);
   const [favoritos, setFavoritos] = useState([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const ArrayIds = [];
 
   const baseURL = "https://api.themoviedb.org/3/movie/";
