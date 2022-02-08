@@ -87,7 +87,7 @@ function Movies() {
                     Details
                   </Button>
 
-                  {favoritos.includes(oneMovie.id) ? (
+                  {favoritos?.includes(oneMovie.id) ? (
                     <p
                       className=" heart d-inline-block"
                       onClick={RemoveFavHandler}
